@@ -115,6 +115,8 @@ def checkToken():
                 + "Fetching new one..."
         )
         Refresh()  # get new token
+    else:
+        print("Token is not expired.")
 
 
 
