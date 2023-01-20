@@ -43,6 +43,7 @@ def stripURL(ebay_url):
 
 # Define all scopes you want here, space separated:
 # Use this scope for the Application Access Token (Shopping API, etc.): https://api.ebay.com/oauth/api_scope
+# Do not percent-encode URLs here, it will be done later for you.
 scope = "https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope"
 scope = urllib.parse.quote_plus(scope)
 
@@ -51,6 +52,10 @@ url = f"""https://auth.ebay.com/oauth2/authorize?client_id={my_AppID}&redirect_u
 
 print("Open this URL in your broswer then copy the resulting URL found in the browser's address bar after you sign in:\n")
 print(url)
+
+# NOTE: if you just get a "Thank you" page without needing to click a button to auth
+# then you probably have an invalid scope specified and there's probably no token in the URL
+# in your address bar. The message from eBay is confusing so beware.
 
 print("\nPaste the URL here then press enter:\n")
 consent_code = input()                 # get URL from user
